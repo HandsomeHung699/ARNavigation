@@ -1,0 +1,32 @@
+[versions]
+agp = "8.8.0"
+ejmlSimple = "0.41"
+kotlin = "1.9.24"
+coreKtx = "1.15.0"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.6.1"
+material = "1.10.0"
+core = "1.47.0"
+sceneform = "1.21.0"
+sceneformBase = "1.17.1"
+sceneformUx = "1.17.1"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+ejml-simple = { module = "org.ejml:ejml-simple", version.ref = "ejmlSimple" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.7.0" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+core = { group = "com.google.ar", name = "core", version.ref = "core" }
+sceneform = { module = "com.gorisse.thomas.sceneform:sceneform", version.ref = "sceneform" }
+sceneform-base = { group = "com.google.ar.sceneform", name = "sceneform-base", version.ref = "sceneformBase" }
+sceneform-ux = { group = "com.google.ar.sceneform.ux", name = "sceneform-ux", version.ref = "sceneformUx" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
