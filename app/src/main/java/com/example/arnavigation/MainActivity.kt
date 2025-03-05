@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         println("111111")
         super.onCreate(savedInstanceState)
-        maybeEnableArButton()
+//        maybeEnableArButton()
         setContentView(R.layout.activity_ar)
 
         arFragment = supportFragmentManager.findFragmentById(R.id.arFragment) as ArFragment
@@ -151,13 +151,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun maybeEnableArButton() {
-        ArCoreApk.getInstance().checkAvailabilityAsync(this) { availability ->
-            if (availability.isSupported) {
-                println("Your device supports ARCore")
-            } else {
-                println("The device does not support ARCore or unknown.")
-            }
-        }
-    }
+//    private fun maybeEnableArButton() {
+//        ArCoreApk.getInstance().checkAvailabilityAsync(this) { availability ->
+//            if (availability.isSupported) {
+//                println("Your device supports ARCore")
+//            } else {
+//                println("The device does not support ARCore or unknown.")
+//            }
+//        }
+//    }
 }
