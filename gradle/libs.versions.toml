@@ -2,6 +2,7 @@
 agp = "8.8.0"
 ejmlSimple = "0.41"
 filamentAndroid = "1.23.0"
+googleCore = "1.23.0"
 kotlin = "1.9.24"
 coreKtx = "1.15.0"
 junit = "4.13.2"
@@ -27,6 +28,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 core = { group = "com.google.ar", name = "core", version.ref = "core" }
 sceneform = { module = "com.gorisse.thomas.sceneform:sceneform", version.ref = "sceneform" }
 sceneform-base = { group = "com.google.ar.sceneform", name = "sceneform-base", version.ref = "sceneformBase" }
+sceneform-core = { module = "com.google.ar.sceneform:core", version = "1.17.1" }
 sceneform-ux = { group = "com.google.ar.sceneform.ux", name = "sceneform-ux", version.ref = "sceneformUx" }
 sceneform-v1230 = { module = "com.gorisse.thomas.sceneform:sceneform", version.ref = "sceneformVersion" }
 

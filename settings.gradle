@@ -22,3 +22,10 @@ dependencyResolutionManagement {
 rootProject.name = "AR Navigation"
 include ':app'
 include ':opencv'
+
+// Add these lines:
+include ':sceneform'
+project(':sceneform').projectDir=new File('sceneformsrc/sceneform')
+
+include ':sceneformux'
+project(':sceneformux').projectDir=new File('sceneformux/ux')
