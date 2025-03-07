@@ -13,11 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/arSceneview"/>
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/arFragment"
-        android:name="io.github.sceneview.ar.ArFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -23,7 +23,7 @@ import io.github.sceneview.math.Rotation
 
 class NavigationController(
     private val context: Context,
-    private val arFragment: ArFragment,
+//    private val arFragment: ArFragment,
     private var sceneView: ArSceneView,
     private val graph: Graph
 ) {
@@ -35,7 +35,9 @@ class NavigationController(
         val currentNode = graph.getNearestNode(
             Point3(cameraPosition.x.toDouble(), cameraPosition.y.toDouble(), cameraPosition.z.toDouble())
         )
-        val destinationNode = graph.getDestinationNode()
+
+        val destinationNode = currentNode
+//        val destinationNode = graph.getDestinationNode()
 
         if (currentNode != null && destinationNode != null) {
             if (lastPath.isEmpty() || currentNode != lastPath.first()) {

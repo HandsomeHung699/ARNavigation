@@ -20,7 +20,7 @@ import org.opencv.core.Mat
 import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var arFragment: ArFragment
+//    private lateinit var arFragment: ArFragment
     private lateinit var sceneView: ArSceneView
     private lateinit var navigationController: NavigationController
     private lateinit var graph: Graph
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 //        maybeEnableArButton()
         setContentView(R.layout.activity_ar)
 
-        arFragment = supportFragmentManager.findFragmentById(R.id.arFragment) as ArFragment
+//        arFragment = supportFragmentManager.findFragmentById(R.id.arFragment) as ArFragment
         sceneView = findViewById(R.id.arSceneview) as ArSceneView
         graph = Graph()
         val pointCloud = PointCloudLoader(this).loadPointCloud(R.raw.point_cloud)
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         // Tạo descriptor cho point cloud
         pointCloudDescriptors = featureMatcher.detectFeatures(Mat()).second
 
-        navigationController = NavigationController(this, arFragment, sceneView,graph)
+        navigationController = NavigationController(this,sceneView,graph)
 
         println("222222_6_so_2")
         processingScope.launch {
