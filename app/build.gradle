@@ -48,7 +48,15 @@ dependencies {
 //    implementation 'io.github.sceneview:sceneform:1.2.3'
 //    implementation 'com.google.android.filament:filament-android:1.31.2'
 //    implementation 'com.google.android.filament:filament-utils-android:1.31.2'
-    implementation "io.github.sceneview:arsceneview:0.9.8"
+//    implementation("com.google.ar.sceneform:core:1.17.1") {
+//        exclude group: "com.google.ar.sceneform"
+//        exclude group: "com.google.android.filament"
+//    }
+//    implementation("com.google.ar.sceneform.ux:sceneform-ux:1.17.1") {
+//        exclude group: "com.google.ar.sceneform"
+//        exclude group: "com.google.android.filament"
+//    }
+    implementation("io.github.sceneview:arsceneview:0.9.8")
 
     //Retrofit
 
@@ -56,8 +64,8 @@ dependencies {
     implementation libs.material
 //    implementation libs.core
 //    implementation 'com.google.ar:core:1.39.0'
-    implementation libs.sceneform.base
-    implementation libs.sceneform.ux
+//    implementation libs.sceneform.base
+//    implementation libs.sceneform.ux
     implementation project(':opencv')
 //    implementation libs.sceneform.ux
 //    api project(":sceneformux")
@@ -65,6 +73,12 @@ dependencies {
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
     implementation libs.ejml.simple
+
+    configurations.configureEach {
+        resolutionStrategy {
+            force "com.google.android.filament:filament-android:1.31.4"
+        }
+    }
 
 //    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.8.7'
 }

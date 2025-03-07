@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.arnavigation
 
 import Graph
@@ -9,7 +11,7 @@ import android.os.Looper
 //import com.google.android.filament.utils.*
 //import com.google.ar.sceneform.AnchorNode
 import com.google.ar.sceneform.math.Vector3
-import com.google.ar.sceneform.ux.ArFragment
+import io.github.sceneview.ar.ArFragment
 import io.github.sceneview.ar.node.ArModelNode
 import org.opencv.core.Point3
 //import com.google.android.filament.utils.Float3

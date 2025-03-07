@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.arnavigation
 
 import CameraPoseEstimator
@@ -11,7 +13,8 @@ import com.google.ar.core.ArCoreApk
 import com.google.ar.core.Session
 import com.google.ar.core.exceptions.UnavailableUserDeclinedInstallationException
 import com.google.ar.sceneform.math.Vector3
-import com.google.ar.sceneform.ux.ArFragment
+//import com.google.ar.sceneform.ux.ArFragment
+import io.github.sceneview.ar.ArFragment
 import io.github.sceneview.ar.ArSceneView
 import org.opencv.core.Mat
 import kotlinx.coroutines.*
@@ -56,12 +59,11 @@ class MainActivity : AppCompatActivity() {
         navigationController = NavigationController(this, arFragment, sceneView,graph)
 
         println("222222_6_so_2")
-        arFragment.arSceneView.scene.addOnUpdateListener {
-            processingScope.launch {
-                println("333333_6_so_3")
-                processCameraFrame()
-            }
+        processingScope.launch {
+            println("333333_6_so_3")
+            processCameraFrame()
         }
+
 
 //        // Cập nhật vị trí camera
 //        arFragment.arSceneView.scene.addOnUpdateListener {
@@ -86,28 +88,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     private suspend fun processCameraFrame() {
-        val cameraPose = withContext(Dispatchers.Main) { arFragment.arSceneView.arFrame?.camera?.pose }
-        if (cameraPose != null) {
-            println("444444_6_so_4")
-            val cameraImage = getCameraImage()
-            println("555555_6_so_5")
-            navigationController.addArrow(Vector3((1).toFloat(), (1).toFloat(), (1).toFloat()))
-            val estimatedNode = cameraPoseEstimator.estimatePose(cameraImage, pointCloudDescriptors)
+//        val cameraPose = withContext(Dispatchers.Main) { arFragment.arSceneView.arFrame?.camera?.pose }
+        println("444444_6_so_4")
+        val cameraImage = getCameraImage()
+        println("555555_6_so_5")
+        navigationController.addArrow(Vector3((1).toFloat(), (1).toFloat(), (1).toFloat()))
+        val estimatedNode = cameraPoseEstimator.estimatePose(cameraImage, pointCloudDescriptors)
 
-            if (estimatedNode != null) {
-                val filteredNode = kalmanFilter.correct(estimatedNode) // 🛠 Sử dụng Kalman Filter
-                val filteredState = kalmanFilter.getState()
-                val filteredVector = Vector3(
-                    filteredState.get(0, 0).toFloat(),
-                    filteredState.get(1, 0).toFloat(),
-                    filteredState.get(2, 0).toFloat()
-                )
-                println("Been here")
-                withContext(Dispatchers.Main) {
-                    navigationController.updateNavigation(filteredVector)
-                }
+        if (estimatedNode != null) {
+            val filteredNode = kalmanFilter.correct(estimatedNode) // 🛠 Sử dụng Kalman Filter
+            val filteredState = kalmanFilter.getState()
+            val filteredVector = Vector3(
+                filteredState.get(0, 0).toFloat(),
+                filteredState.get(1, 0).toFloat(),
+                filteredState.get(2, 0).toFloat()
+            )
+            println("Been here")
+            withContext(Dispatchers.Main) {
+                navigationController.updateNavigation(filteredVector)
             }
         }
+
     }
 
     private fun getCameraImage(): Mat {
