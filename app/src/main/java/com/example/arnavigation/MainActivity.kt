@@ -12,11 +12,13 @@ import com.google.ar.core.Session
 import com.google.ar.core.exceptions.UnavailableUserDeclinedInstallationException
 import com.google.ar.sceneform.math.Vector3
 import com.google.ar.sceneform.ux.ArFragment
+import io.github.sceneview.ar.ArSceneView
 import org.opencv.core.Mat
 import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var arFragment: ArFragment
+    private lateinit var sceneView: ArSceneView
     private lateinit var navigationController: NavigationController
     private lateinit var graph: Graph
     private lateinit var cameraPoseEstimator: CameraPoseEstimator
@@ -39,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_ar)
 
         arFragment = supportFragmentManager.findFragmentById(R.id.arFragment) as ArFragment
+        sceneView = findViewById(R.id.arSceneview) as ArSceneView
         graph = Graph()
         val pointCloud = PointCloudLoader(this).loadPointCloud(R.raw.point_cloud)
         graph.buildFromPointCloud(pointCloud)
@@ -50,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         // Tạo descriptor cho point cloud
         pointCloudDescriptors = featureMatcher.detectFeatures(Mat()).second
 
-        navigationController = NavigationController(this, arFragment, graph)
+        navigationController = NavigationController(this, arFragment, sceneView,graph)
 
         println("222222_6_so_2")
         arFragment.arSceneView.scene.addOnUpdateListener {
